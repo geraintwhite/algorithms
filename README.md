@@ -1,4 +1,4 @@
 algorithms
 ==========
 
-Algorithms and data structures for A-level Computing
+Algorithms and data structures implementations
