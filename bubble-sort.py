@@ -13,7 +13,7 @@ def bubble_sort(arr):
                 arr[j+1] = temp
     print('comparisons {}, swaps {}'.format(comparisons, swaps))
 
-arr = [i for i in range(10)]
+arr = [i for i in range(100)]
 random.shuffle(arr)
 print(arr)
 bubble_sort(arr)
