@@ -55,6 +55,19 @@ class Tree():
         out = ''
         if node is not None:
             out += self._print(node.left)
-            out += str(node) + '\n'
-            out += self._print(node.right)
+            out += str(node) + ' '
+            out += self._print(node.right) + '\n'
         return out
+
+
+if __name__ == '__main__':
+    tree = Tree()
+
+    tree.insert(3, 'hello')
+    tree.insert(7, 'world')
+    tree.insert(1, 'asdf')
+    tree.insert(5, 'qwerty')
+
+    print(tree, end='')
+    print(tree.find(3))
+    print(tree.find(2))
