@@ -1,0 +1,113 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tree</title>
+</head>
+
+<body>
+  <button id="add">Add item</button>
+  <button id="del">Delete item</button>
+  <button id="in-order">In order list</button>
+  <button id="pre-order">Pre order list</button>
+  <button id="post-order">Post order list</button>
+  <button id="reverse-order">Reverse order list</button>
+
+  <script type="text/javascript">
+    var addBtn = document.getElementById('add');
+    var delBtn = document.getElementById('del');
+    var inOrderBtn = document.getElementById('in-order');
+    var preOrderBtn = document.getElementById('pre-order');
+    var postOrderBtn = document.getElementById('post-order');
+    var reverseOrderBtn = document.getElementById('reverse-order');
+
+    function Node(data) {
+      this.data = data;
+      this.left = undefined;
+      this.right = undefined;
+    }
+
+    function add(node, data) {
+      if (node.data == data) {
+        console.log(data + ' already exists in tree');
+      } else {
+        if (data < node.data) {
+          if (node.left == undefined) {
+            console.log('node created left of ' + node.data + ' : ' + data);
+            node.left = new Node(data);
+          } else {
+            add(node.left, data);
+          }
+        } else {
+          if (node.right == undefined) {
+            console.log('node created right of ' + node.data + ' : ' + data);
+            node.right = new Node(data);
+          } else {
+            add(node.right, data);
+          }                   
+        }
+      }
+    }
+
+    function inOrder(node) {
+      if (node.left != undefined) inOrder(node.left);
+      console.log(node.data);
+      if (node.right != undefined) inOrder(node.right);
+    }
+
+    function preOrder(node) {
+      console.log(node.data);
+      if (node.left != undefined) preOrder(node.left);
+      if (node.right != undefined) preOrder(node.right);
+    }
+
+    function postOrder(node) {
+      if (node.left != undefined) postOrder(node.left);
+      if (node.right != undefined) postOrder(node.right);
+      console.log(node.data);
+    }
+
+    function reverseOrder(node) {
+      if (node.right != undefined) reverseOrder(node.right);
+      console.log(node.data);
+      if (node.left != undefined) reverseOrder(node.left);
+    }
+
+    var root = undefined;
+
+    addBtn.onclick = function () {
+      data = prompt('Data to add to tree:');
+
+      if (root == undefined) {
+        console.log('created new root node: ' + data);
+        root = new Node(data);
+      } else {
+        add(root, data);
+      }
+    };
+
+    inOrderBtn.onclick = function () {
+      console.log('list tree items in order');
+      inOrder(root);
+    };
+
+    preOrderBtn.onclick = function () {
+      console.log('list tree items pre order');
+      preOrder(root);
+    };
+
+    postOrderBtn.onclick = function () {
+      console.log('list tree items post order');
+      postOrder(root);
+    };
+
+    reverseOrderBtn.onclick = function () {
+      console.log('list tree items reverse order');
+      reverseOrder(root);
+    };
+  </script>
+</body>
+
+</html>
