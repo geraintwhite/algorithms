@@ -43,7 +43,7 @@ def transition_function(pattern):
     m = len(pattern)
     table = {}
 
-    for q in range(m):
+    for q in range(m+1):
         for a in range(d):
             k = min(m, q+1)
             while not (pattern[:q]+chr(a))[-k:] == pattern[:k]:
@@ -65,7 +65,6 @@ def finite_automota(string, pattern):
     for s in range(n):
         q = max(0, table[q, ord(string[s])])
         if q == m:
-            q = 0
             matches.append((s-m+1, s+1))
 
     return matches
